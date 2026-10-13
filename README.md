@@ -12,10 +12,11 @@ Translates restaurant menu dishes using a local open-source model (Llama 3.2 via
 
 This tool is designed to reduce allergen misinformation in translated menus:
 
-- The model **only uses ingredients explicitly written** in the restaurant notes you provide. It never guesses ingredients from a dish name.
-- The model **never claims a dish is allergen-free** (e.g. "peanut-free", "gluten-free") unless the notes explicitly say so.
-- Any detail not confirmed by the notes is flagged with **(unconfirmed, owner please verify)**.
+- The model **only states ingredients explicitly written** in the restaurant notes you provide. For dishes not covered by the notes, it **never lists ingredients** — it only describes what kind of dish it is.
+- The model **never claims a dish is allergen-free** (e.g. "peanut-free", "gluten-free", "vegan") unless the notes explicitly say so.
+- Dishes without notes are marked with **(ingredients and allergens not confirmed, owner please verify)**.
 - A visible warning reminds users to review all output before printing.
+- Supports **18 languages** including English, Hindi, Spanish, French, German, Italian, Japanese, Korean, Arabic, and more.
 
 > **Always review translations with your chef or menu owner before publishing.**
 

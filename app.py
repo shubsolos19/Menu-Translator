@@ -102,10 +102,10 @@ HTML_TEMPLATE = """
             background: #1a1d27;
             border: 1px solid #2d3140;
             border-radius: 8px;
-            white-space: pre-wrap;
             line-height: 1.7;
             font-size: 0.95rem;
         }
+        .result { white-space: pre-wrap; }
         .output-box h2 {
             font-size: 1.1rem;
             color: #ffffff;
@@ -136,7 +136,7 @@ HTML_TEMPLATE = """
     <p class="subtitle">Translate any restaurant menu dish instantly using AI</p>
 
     <div class="container">
-        <form method="POST" action="/translate">
+        <form method="POST" action="/translate" onsubmit="var b=this.querySelector('button'); b.disabled=true; b.textContent='Translating...';">
             <div>
                 <label for="language">Translate to</label>
                 <select id="language" name="language">
@@ -163,7 +163,7 @@ HTML_TEMPLATE = """
         {% if output %}
         <div class="output-box">
             <h2>Translation</h2>
-            {{ output }}
+            <div class="result">{{ output }}</div>
         </div>
         <div class="safety-warning">
             ⚠ Review all translations and allergen information before printing. This tool can make mistakes.
@@ -187,9 +187,9 @@ Restaurant notes:
 {notes_section}
 
 Rules (you must follow every rule strictly):
-1. Only state ingredients if they are explicitly written in the Restaurant notes above. Never guess or infer ingredients from the dish name alone.
+1. Only state ingredients if they are explicitly written in the Restaurant notes above. For any dish not covered by the notes, do NOT list ingredients. Only say what kind of dish it is (for example "a Thai stir-fried noodle dish").
 2. Never claim a dish is free of any ingredient or allergen. Do not write "peanut-free", "vegan", "gluten-free", "dairy-free", "nut-free", or any similar claim unless the Restaurant notes explicitly say so.
-3. If you include any detail in the description that is not directly confirmed by the Restaurant notes, you must append "(unconfirmed, owner please verify)" after that detail.
+3. Never add details that are not in the Restaurant notes. If a dish has no note, end its line with "(ingredients and allergens not confirmed, owner please verify)".
 4. If the Restaurant notes contain information about a specific dish, add a "Source note:" line immediately after that dish's translation showing the relevant note.
 5. Keep descriptions short (one sentence). Do not add extra commentary.
 
