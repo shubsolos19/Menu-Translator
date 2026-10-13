@@ -1,5 +1,7 @@
 # Menu Translator
 
+![Menu Translator Banner](banner.jpg)
+
 Translates restaurant menu dishes using a local open-source model (Llama 3.2 via Ollama). Runs offline, no API cost, menu data stays private.
 
 ## Setup
